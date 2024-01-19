@@ -1,0 +1,15 @@
+class Solution {
+private:
+    unordered_map<int, int> fibonacci;
+public:
+int climbStairs(int n) {
+    if (n <= 2)
+        return n;
+
+    if (fibonacci.find(n) != fibonacci.end())
+        return fibonacci[n];
+    
+    fibonacci.insert({ n, climbStairs(n - 2) + climbStairs(n - 1) });
+    return fibonacci[n];
+}
+};
